@@ -1,0 +1,18 @@
+.abc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.abcd{
+    border:2px solid rgb(154, 148, 148);
+    border-radius: 20px;
+}
+/* .abcd:hover{
+    border:2px solid rgb(107, 104, 104);
+} */
+
+.a{
+    width:40%;
+}
