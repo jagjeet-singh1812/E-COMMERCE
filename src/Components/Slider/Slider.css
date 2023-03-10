@@ -1,0 +1,45 @@
+.slider{
+    display: flex;
+    flex-direction: row;
+}
+
+.left-btn{
+    position: absolute;
+    top: 35vh;
+    background-color: transparent;
+    border: none;
+}
+
+.left-btn :hover{
+    background-image: radial-gradient(#ffffff,gray,black);
+    border-radius: 50%;
+}
+
+.right-btn{
+    position: absolute;
+    top: 35vh;
+    right: 0vh;
+    background-color: transparent;
+    border: none;
+}
+
+.right-btn :hover{
+    background-image: radial-gradient(white,gray,black);
+    border-radius: 50%;
+}
+
+.img{
+    width: 1000px;
+    height: 600px;
+}
+
+.slide{
+    opacity: 0;
+    transition: 1s ease;
+}
+
+.slide-active{
+    opacity: 1;
+    transition: 1s ease;
+    transform: scale(1.08);
+}

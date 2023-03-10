@@ -1,0 +1,13 @@
+.container{
+    margin: 5vh auto;
+    height: 100px;
+    width: 75%;
+    background-color: peachpuff;
+    border-radius: 30px;
+}
+
+.textt{
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 25px;
+}

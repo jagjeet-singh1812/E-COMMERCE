@@ -1,0 +1,26 @@
+.Brand-logo{
+    width: 100px;
+    height: 100px;
+    animation: scroll 60s linear infinite;
+    border-radius: 50%;
+    background-size:auto
+  }
+  
+  .slide-brands-track {
+    width: 100%;
+    display: flex;
+    gap: 3em;
+    overflow: hidden;
+  }
+  
+  .slider-brands {
+    width:75%;
+    margin-top: 70px;
+    padding: 2em 2em;
+  }
+  
+  @keyframes scroll {
+    0% {transform: translateX(0);}
+    100% {transform: translatex(-1000%)}
+  }
+

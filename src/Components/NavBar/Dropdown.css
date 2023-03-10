@@ -1,0 +1,32 @@
+*{
+    font-size: 1.2rem;
+}
+
+.dropdown-container{
+    background-color: peachpuff;
+    border: 1px solid black;
+    position: absolute;
+    width: 15vw;
+    height: 35vh;
+    right: 33vh;
+    top: 8vh;
+    border-radius: 10px;
+    z-index: 999;
+    position: fixed;
+    box-shadow: inset;
+}
+
+.list{
+    list-style: none;
+}
+
+.list-items{
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+.br{
+    border: 1px solid gray;
+    margin: 5px 10px;
+    width: 13vw;
+}
