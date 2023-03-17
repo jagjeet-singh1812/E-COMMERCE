@@ -5,7 +5,9 @@ const connection = require('../config/database');
 const User = connection.models.User;
 const isAuth = require('./authMiddleware').isAuth;
 const isAdmin = require('./authMiddleware').isAdmin;
-
+/**
+ * -------------- POST ROUTES ----------------
+ */
  router.post('/login', passport.authenticate('local', { failureRedirect: '/login-failure', successRedirect: 'login-success' }));
 
  router.post('/register', (req, res, next) => {
@@ -25,14 +27,22 @@ const isAdmin = require('./authMiddleware').isAdmin;
         .then((user) => {
             console.log(user);
         });
+
     res.redirect('/login');
  });
+
+
+ /**
+ * -------------- GET ROUTES ----------------
+ */
 
 router.get('/', (req, res, next) => {
     res.send('<h1>Home</h1><p>Please <a href="/register">register</a></p>');
 });
 
+// When you visit http://localhost:3000/login, you will see "Login Page"
 router.get('/login', (req, res, next) => {
+   
     const form = '<h1>Login Page</h1><form method="POST" action="/login">\
     Enter Username:<br><input type="text" name="uname">\
     <br>Enter Password:<br><input type="password" name="pw">\
@@ -40,6 +50,7 @@ router.get('/login', (req, res, next) => {
     res.send(form);
 });
 
+// When you visit http://localhost:3000/register, you will see "Register Page"
 router.get('/register', (req, res, next) => {
 
     const form = '<h1>Register Page</h1><form method="post" action="register">\
@@ -47,18 +58,27 @@ router.get('/register', (req, res, next) => {
                     <br>Enter Password:<br><input type="password" name="pw">\
                     <br><br><input type="submit" value="Submit"></form>';
 
+    // res.send(res);
+    // console.log(res);
     res.send(form);
-    
 });
 
-router.get('/protected-route', isAuth, (req, res, next) => {
-    res.send('You made it to the route.');
+/**
+ * Lookup how to authenticate users on routes with Local Strategy
+ * Google Search: "How to use Express Passport Local Strategy"
+ * 
+ * Also, look up what behaviour express session has without a maxage set
+ */
+router.get('protected-route', isAuth, (req, res, next) => {
+    // res.send('You made it to the route.');
+    res.send("http://localhost:3000/")
 });
 
 router.get('/admin-route', isAdmin, (req, res, next) => {
     res.send('You made it to the admin route.');
 });
 
+// Visiting this route logs the user out
 router.get('/logout', (req, res, next) => {
     req.logout();
     res.redirect('/protected-route');

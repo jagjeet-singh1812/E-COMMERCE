@@ -7,8 +7,8 @@ const validPassword = require('../lib/passwordUtils').validPassword;
 const customFields = {
     usernameField: 'uname',
     passwordField: 'pw',
-    adressfeild:'ad',
-    Email:'em'
+    // adressfeild:'ad',
+    // Email:'em'
 };
 
 const verifyCallback = (username, password, done) => {
@@ -47,4 +47,3 @@ passport.deserializeUser((userId, done) => {
         })
         .catch(err => done(err))
 });
-
