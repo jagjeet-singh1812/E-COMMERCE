@@ -1,0 +1,62 @@
+.about-con{
+    background-image: linear-gradient(to right, #8e2de2,#4a00e0);
+    background-color: white;
+    height: 100vh;
+}
+
+.about-txt-1{
+    color: black;
+    font-size: 7rem;
+    font-weight: 700;
+    position: absolute;
+    top: 15%;
+    left: 9.5%;
+}
+.about-txt-2{
+    color: black;
+    font-size: 7rem;
+    font-weight: 700;
+    position: absolute;
+    top: 40%;
+    left: 11%;
+}
+.about-txt-3{
+    color: black;
+    font-size: 7rem;
+    font-weight: 700;
+    position: absolute;
+    top: 65%;
+    left: 11%;
+}
+
+.text-0{
+    position: absolute;
+    top: 20vh;
+    left: 100vh;
+    height: 50vh;
+    width: 45vw;
+}
+
+.about-side-txt-1{
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+}
+.about-side-txt-2{
+    text-align: center;
+    font-size: 1.7rem;
+}
+/* .x{
+    position: relative;
+    top:30vh;
+} */
+
+.whats-new{
+    font-size: larger;
+    margin: 20px 0px;
+    text-align: center;
+}
+.about-side-txt-3{
+    text-align: center;
+    font-size: 1.7rem;
+}

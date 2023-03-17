@@ -1,0 +1,24 @@
+@import "../../css-config/mixins.scss";
+.main-content {
+    .layout {
+        max-width: calc(100% - 20px);
+        margin: 0 auto;
+        @include md {
+            max-width: 1200px;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 768px){
+.products-container .sec-heading {
+  margin-bottom: -30px;
+  font-size: 24px;
+}
+}
+.products-container .sec-heading {
+  margin-bottom: -30px;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+}

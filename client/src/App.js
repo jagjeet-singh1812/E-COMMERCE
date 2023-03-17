@@ -1,51 +1,45 @@
-import './App.css';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-} from "react-router-dom";
-import Getstarted from './Components/getstarted';
-import Login from './Components/login';
-import Signup from './Components/signup';
-import React, { useState,useEffect } from 'react'
-import Splash from './Components/splash';
-// import Single_product from './Components/single_p'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.scss";
+import { useState,useEffect } from "react";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Home from "./components/Home/Home";
+import Category from "./components/Category/Category";
+import SingleProduct from "./components/SingleProduct/SingleProduct";
+import Newsletter from "./components/Footer/Newsletter/Newsletter";
+import AppContext from "./utils/context";
+import Splash from "./preloader/Splash";
+import Aboutus from "./components/Aboutus/Aboutus";
+import Done from "./preloader/done";
+import Myorders from "./components/myorders/Myorders";
 function App() {
-  const [loading, setLoading] = useState(false);
-  useEffect(()=>{
-    setLoading(true)
-    setTimeout(()=>{
-      setLoading(false)
-    },2500)
-  },[])
-  return (
-   loading?
+        const [loading, setLoading] = useState(false);
+        useEffect(()=>{
+          setLoading(true)
+          setTimeout(()=>{
+            setLoading(false)
+          },2500)
+        },[])
+    return (
+        loading?
     <Splash></Splash>
     :
-   <>
-     <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Getstarted/>
-        </Route>
-      </Switch> 
-      <Switch>
-        <Route path="/login">
-          <Login/>
-        </Route>
-      </Switch> 
-      <Switch>
-        <Route path="/signup">
-          <Signup/>
-        </Route>
-      </Switch> 
-      {/* <Switch> */}
-        {/* <Route path="/SINGLE">
-          <Single_product/>
-        </Route> */}
-      {/* </Switch>  */}
-    </BrowserRouter>
-   </>
-  );
+        <BrowserRouter>
+            <AppContext>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<Aboutus/>} />
+                    <Route path="/category/:id" element={<Category />} />
+                    <Route path="/product/:id" element={<SingleProduct />} />
+                    <Route path="/success" element={<Done/>}/>
+                    <Route path="/myorder" element={<Myorders></Myorders>}/>
+                </Routes>
+                <Newsletter />
+                <Footer />
+            </AppContext>
+        </BrowserRouter>
+    );
 }
+
 export default App;

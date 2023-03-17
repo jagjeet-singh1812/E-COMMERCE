@@ -1,25 +1,30 @@
 {
-  "name": "express-session-authenticator-starter",
-  "version": "1.0.0",
-  "description": "A tutorial on session based user authentication using Passport JS",
-  "main": "app.js",
+  "name": "server",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "base64url": "^3.0.1",
-    "connect-mongo": "^3.1.2",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-session": "^1.17.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.12",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
-  }
+    "@strapi/plugin-i18n": "4.7.1",
+    "@strapi/plugin-users-permissions": "4.7.1",
+    "@strapi/strapi": "4.7.1",
+    "better-sqlite3": "8.0.1",
+    "stripe": "^11.14.0"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "6c768c7e-ff2b-4d65-8b5b-b11cbfd33aac"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
 }
