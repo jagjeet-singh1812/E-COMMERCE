@@ -10,9 +10,11 @@ import Cart from "../Cart/Cart";
 // import Category from "../Home/Category/Category";
 // import {HashLink as link} from "react-router-hash-link"
 import { useAuth0 } from "@auth0/auth0-react";
+import Dropdown from "./dropdown";
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [searchModal, setSearchModal] = useState(false);
+  const [cat,setcat]=useState(false);
   const navigate = useNavigate();
   // const cate=useRef(<Category/>);
 
@@ -34,6 +36,14 @@ const Header = () => {
 
   const { user, isAuthenticated, isLoading } = useAuth0();
 
+  const showit=()=>{
+    if(!cat){
+      setcat(true);
+    }
+    else if(cat){
+      setcat(false);
+    }
+  }
   const { logout } = useAuth0();
 
   // const out=()=>{
@@ -58,7 +68,9 @@ const Header = () => {
           <ul className="left">
             <li onClick={() => navigate("/")}>Home</li>
             <li onClick={() => navigate("/about")}>About</li>
-            <li onClick={() => navigate("/category/1")}>Categories</li>
+            {
+              cat?(<><li onClick={() => showit()}>Categories</li> <Dropdown/></>):( <li onClick={() => showit()}>Categories</li>)
+            }
           </ul>
           <div className="center" onClick={() => navigate("/")}>
             E-MPORIUM
