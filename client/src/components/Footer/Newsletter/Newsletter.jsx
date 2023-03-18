@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState}from "react";
 import {
     FaFacebookF,
     FaTwitter,
@@ -7,6 +7,22 @@ import {
 } from "react-icons/fa";
 import "./Newsletter.scss";
 const Newsletter = () => {
+
+    const [query, setQuery] = useState("");
+    const onChange = (e) => {
+        setQuery(e.target.value);
+        console.log(query);
+    };
+
+    // if (!query.length) {
+    //     data = null;
+    // }
+    const sendmail=async(email)=>{
+       await fetch(`/sendmail/${email}`,{method:"GET"}).then((res)=>{console.log("sucessfully sended the message")}).catch(console.error);
+       setQuery("");
+       alert(`thank you ${email} for registering to the our newsletter`);
+    }
+
     return (
         <div className="newsletter-section">
             <div className="newsletter-content">
@@ -15,8 +31,11 @@ const Newsletter = () => {
                     Sign up for latest updates and offers
                 </span>
                 <div className="form">
-                    <input type="text" placeholder="Email Address" />
-                    <button>Subscribe</button>
+                    <input type="email" 
+                    autoFocus
+                    value={query}
+                    onChange={onChange} placeholder="Email Address" />
+                    <button onClick={()=>{sendmail(query)}}>Subscribe</button>
                 </div>
                 <span className="text">
                     Will be used in accordance with our Privacy Policy
