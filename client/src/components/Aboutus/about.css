@@ -1,7 +1,8 @@
 .about-con{
     background-image: linear-gradient(to right, #8e2de2,#4a00e0);
     background-color: white;
-    height: 100vh;
+    height: 100vh;;
+    color:white;
 }
 
 .about-txt-1{
@@ -10,7 +11,8 @@
     font-weight: 700;
     position: absolute;
     top: 25%;
-    left: 9.5%;
+    left: 9.5%;;
+    color:white;
 }
 .about-txt-2{
     color: black;
@@ -18,7 +20,8 @@
     font-weight: 700;
     position: absolute;
     top: 50%;
-    left: 11%;
+    left: 11%;;
+    color:white;
 }
 .about-txt-3{
     color: black;
@@ -26,7 +29,8 @@
     font-weight: 700;
     position: absolute;
     top: 75%;
-    left: 11%;
+    left: 11%;;
+    color:white;
 }
 
 .text-0{
@@ -34,19 +38,22 @@
     top: 20vh;
     left: 100vh;
     height: 50vh;
-    width: 45vw;
+    width: 45vw;;
+    color:white;
 }
 
 .about-side-txt-1{
     text-align: center;
     font-size: 2rem;
     margin-bottom: 20px;
-    line-height:5vh
+    line-height:5vh;
+    color:white;
 }
 .about-side-txt-2{
     text-align: center;
     font-size: 2rem;
-    line-height:5vh
+    line-height:5vh;
+    color:white;
 
 }
 /* .x{
@@ -58,11 +65,13 @@
     font-size: 2.5rem;
     margin: 20px 0px;
     text-align: center;
-    line-height: 6vh;
+    line-height: 6vh;;
+    color:white;
 }
 .about-side-txt-3{
     text-align: center;
     font-size: 2rem;
-    line-height:5vh
+    line-height:5vh;
+    color:white;
 
 }

@@ -5,6 +5,8 @@ import {
     FaInstagram,
     FaLinkedinIn,
 } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./Newsletter.scss";
 const Newsletter = () => {
 
@@ -13,14 +15,12 @@ const Newsletter = () => {
         setQuery(e.target.value);
         console.log(query);
     };
-
-    // if (!query.length) {
-    //     data = null;
-    // }
     const sendmail=async(email)=>{
-       await fetch(`/sendmail/${email}`,{method:"GET"}).then((res)=>{console.log("sucessfully sended the message")}).catch(console.error);
+       await fetch(`https://newslettersender.onrender.com/sendmail/${email}`,{method:"GET"}).then((res)=>{console.log("sucessfully sended the message")}).catch(console.error);
        setQuery("");
-       alert(`thank you ${email} for registering to the our newsletter`);
+    //    alert(`thank you ${email} for registering to the our newsletter`);
+    // difftaoast();
+    toast.success(`thank you ${email} for registering to the our newsletter`);
     }
 
     return (
@@ -55,6 +55,7 @@ const Newsletter = () => {
                     </div>
                 </span>
             </div>
+            <ToastContainer />
         </div>
     );
 };

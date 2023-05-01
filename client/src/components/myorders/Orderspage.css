@@ -1,0 +1,22 @@
+.orders-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .orders-page__title {
+    margin-bottom: 20px;
+  }
+  
+  .orders-page__orders {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .orders-page__orders {
+      grid-template-columns: 1fr;
+    }
+  }
+  

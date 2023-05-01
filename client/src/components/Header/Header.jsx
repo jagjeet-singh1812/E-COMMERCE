@@ -33,10 +33,11 @@ const Header = () => {
       setScrolled(false);
     }
   };
-
+  
   const { user, isAuthenticated, isLoading } = useAuth0();
-
+  
   const showit=()=>{
+    console.log(user)
     if(!cat){
       setcat(true);
     }
@@ -83,7 +84,7 @@ const Header = () => {
               {!!cartCount && <span>{cartCount}</span>}
             </span>
             {
-                isAuthenticated?(<span>{user.name}</span>):(<span></span>)
+                isAuthenticated?(<span>{user.nickname}</span>):(<span></span>)
             }
           </div>
         </div>

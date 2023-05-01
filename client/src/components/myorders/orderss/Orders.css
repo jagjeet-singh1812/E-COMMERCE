@@ -1,0 +1,20 @@
+.order {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+  }
+  
+  .order__title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .order__details {
+    margin-top: 10px;
+  }
+  
+  .order__detail {
+    margin-bottom: 5px;
+  }
+  
