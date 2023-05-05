@@ -1,4 +1,6 @@
 import React ,{useState}from "react";
+// const axios = require('axios');
+import axios from "axios";
 import {
     FaFacebookF,
     FaTwitter,
@@ -8,19 +10,92 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./Newsletter.scss";
+import { fetchDataFromApi } from "../../../utils/api";
 const Newsletter = () => {
 
+
+    function isValidEmail(email) {
+        const emailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+        return emailFormat.test(email);
+      }
+    //   async function isalreadyEmailthere(email) {
+    //     try {
+    //       const response = await axios.get(
+    //         `${process.env.REACT_APP_STRIPE_APP_DEV_URL}/api/newsletters`,
+    //         {
+    //           headers: {
+    //             Authorization: `bearer ${process.env.REACT_APP_STRIPE_DEV_APP_KEY}`,
+    //           },
+    //         }
+    //       );
+    //       const data = response.data.data;
+    //       console.log('Data from API:', data);
+    //       if (data.length === 0) return false;
+    //       for (let i = 0; i <data.length; i++) {
+    //         console.log('Email from API:', data[i].attributes.email_id);
+    //         if (data[i].attributes.email_id === email) {
+    //             console.log("matchfound")
+    //           return true;
+    //         }
+    //       }
+    //       return false; // email does not exist
+    //     } catch (error) {
+    //       console.error(error);
+    //       return false;
+    //     }
+    //   };
+      
+      
+    const updateEmail = async (email) => {
+        // if(isalreadyEmailthere(email)===true){
+        //     toast.info('EMAIL ALREADY REGISTERED!!!');
+        // }
+        // else{
+    if(isValidEmail(email)){
+        try {
+            // console.log(JSON.stringify({ data: { email_id: email } }));
+          const response = await axios.post(
+            `${process.env.REACT_APP_STRIPE_APP_DEV_URL}/api/newsletters`,
+            {
+                    data: {
+                    "email_id": email
+                  }
+            },
+            {
+              headers: {
+                Authorization: `bearer ${process.env.REACT_APP_STRIPE_DEV_APP_KEY}`,
+                'Content-Type': 'application/json',
+              },
+            }
+          );
+        //   console.log(response.data);
+          toast.success(`thank you ${email} for registering to the our newsletter`);
+        } catch (error) {
+          console.error(error);
+        }
+    }
+    else if(!isValidEmail(email)){
+        toast.error('invalid email id !!! Enter a valid email_id')
+    // }
+}
+      };
+      
     const [query, setQuery] = useState("");
     const onChange = (e) => {
         setQuery(e.target.value);
-        console.log(query);
+        // console.log(query);
     };
     const sendmail=async(email)=>{
-       await fetch(`https://newslettersender.onrender.com/sendmail/${email}`,{method:"GET"}).then((res)=>{console.log("sucessfully sended the message")}).catch(console.error);
+        if(isValidEmail(email)){
+            await fetch(`https://newslettersender.onrender.com/sendmail/${email}`,{method:"GET"}).then((res)=>{console.log("sucessfully sended the message")}).catch(console.error);
+        }
+        // else if(isalreadyEmailthere(email)){
+        //     toast.info('EMAIL ALREADY REGISTERED!!!');
+        // }
+       updateEmail(email);
        setQuery("");
     //    alert(`thank you ${email} for registering to the our newsletter`);
     // difftaoast();
-    toast.success(`thank you ${email} for registering to the our newsletter`);
     }
 
     return (

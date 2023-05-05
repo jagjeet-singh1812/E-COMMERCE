@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TbSearch } from "react-icons/tb";
 import { CgShoppingCart } from "react-icons/cg";
 import { AiOutlineHeart } from "react-icons/ai";
+import { useLocation } from 'react-router-dom'
 import "./Header.scss";
 import Search from "./Search/Search";
 import { Context } from "../../utils/context";
@@ -33,6 +34,14 @@ const Header = () => {
       setScrolled(false);
     }
   };
+  // const location = useLocation();
+
+//   useEffect(() => {
+//     if (location.pathname === '/success') {
+//       // Auto-click the button
+//       document.getElementById('xyz').click();
+//     }
+//  },[location]);
   
   const { user, isAuthenticated, isLoading } = useAuth0();
   
@@ -100,7 +109,7 @@ const Header = () => {
           </div>
         ) : (
           <div className="btnbtn">
-            <button onClick={() => log()}>Log In</button>
+            <button id='xyz' onClick={() => log()}>Log In</button>
           </div>
         )}
       </header>

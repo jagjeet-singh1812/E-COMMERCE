@@ -1,62 +1,69 @@
-// import React, { useState, useEffect } from "react";
-// import { fetchDataFromApi } from "../../utils/api";
-// function OrdersPage() {
-//   const [orders, setOrders] = useState([]);
+import React, { useState, useEffect } from "react";
+import { fetchDataFromApi } from "../../utils/api";
+import "./m.css";
 
-//   useEffect(() => {
-//     fetchDataFromApi("/api/products?populate=*").then((res) => {
-//         setOrders(res);
-//         console.log(res);
-// //         console.log(typeof(res));
-// //     });
-// //   }, []);
-// //   console.log(orders);
+function OrdersPage() {
+  const [orders, setOrders] = useState([]);
 
-// //   return (
-// //    <>
-// //    </>
-// //   );
-// // }
+  useEffect(() => {
+    fetchDataFromApi("/api/orders?populate=*").then((data) => {
+      const extractedOrders = data.data.map((order) => {
+        const { id, attributes } = order;
+        const { products } = attributes;
+        return { id, products };
+      });
+      setOrders(extractedOrders);
+      console.log(orders);
+    });
+  }, []);
+let x=1;
+  return (
+    <div className="orders-container">
+      <h1 className="orders-title">Order History</h1>
+      {orders.map((order) => (
+        <div key={order.id} className="order-box">
+          <div className="order-header">
+            <h2>Order #{x++}</h2>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>status</th>
+                <th>Delivery expected :</th>
+              </tr>
+            </thead>
+            <tbody>
+              {order.products.map((product) => (
+                <tr key={product.id}>
+                  <td>{product.attributes.title}</td>
+                  <td>{product.attributes.desc}</td>
+                  <td>₹{product.attributes.price.toFixed(2)}</td>
+                  <td>{product.attributes.quantity}</td>
+                  <td>₹{(product.attributes.price* product.attributes.quantity).toFixed(2)}</td>
+                  <td
+                className={`status ${
+                  order.status === "completed" ? "green" : "red"
+                }`}
+                >
+                {order.status}
+              </td>
+              <td>{product.attributes.delivery}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="order-total">
+            <h3>Total: ₹{order.products.reduce((acc, cur) => acc + (cur.attributes.price*cur.attributes.quantity ), 0).toFixed(2)}</h3>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
-// // export default OrdersPage;
-
-// import React, { useState, useEffect } from "react";
-// import { fetchDataFromApi } from "../../utils/api";
-
-// function OrdersPage() {
-//   const [products, setProducts] = useState({});
-
-//   useEffect(() => {
-//     fetchDataFromApi("/api/products?populate=*").then((res) => {
-//       setProducts(res);
-//     });
-//   }, []);
-
-//   return (
-//     <div className="products-page">
-//       <h1>Products</h1>
-//       <table className="products-table">
-//         <thead>
-//           <tr>
-//             <th>ID</th>
-//             <th>Title</th>
-//             <th>Description</th>
-//             <th>Price</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {Object.keys(products).map((key) => (
-//             <tr key={key}>
-//               <td>{products[key].id}</td>
-//               <td>{products[key].attributes.title}</td>
-//               <td>{products[key].attributes.desc}</td>
-//               <td>{products[key].attributes.price}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// }
-
-// export default OrdersPage;
+export default OrdersPage;

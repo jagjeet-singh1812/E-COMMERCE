@@ -64,6 +64,7 @@ const SingleProduct = () => {
                         <span className="name">{product.title}</span>
                         <span className="price">&#8377;{product.price}</span>
                         <span className="desc">{product.desc}</span>
+                        <span className="delivery">Delivery Expected:{product.delivery}</span>
                         { isAuthenticated ?(
                         <div className="cart-buttons">
                             <div className="quantity-buttons">
@@ -81,6 +82,7 @@ const SingleProduct = () => {
                                 <FaCartPlus size={20} />
                                 ADD TO CART
                             </button>
+                            
                         </div>):(<div>TO BUY THE PRODUCT LOGIN OR SIGN UP</div>)}
 
                         <span className="divider" />
